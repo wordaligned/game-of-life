@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Life on Canvas</title>
+    <script src="./scripts/jquery-1.7.2.min.js" type="text/javascript"></script>
+    <script src="./scripts/patterns.js" type="text/javascript"></script>
+    <script src="./scripts/pattern_colours.js" type="text/javascript"></script>
+    <script src="./scripts/life.js" type="text/javascript"></script>
+    <link type="text/css" href="./styles/life.css" rel="stylesheet">
+    <link type="text/css" href="./styles/ui-lightness/jquery-ui-1.8.20.custom.css" rel="stylesheet">
+    <script type="text/javascript" src="./scripts/jquery-ui-1.8.20.custom.min.js"></script>
+</head>
+<body>
+<h1>Conway&#8217;s Game of Life</h1>
+<div>
+  <canvas id="lifecanvas" width="800" height="420" class="ui-widget-content ui-droppable">
+  Unfortunately your browser does not support the <a href="http://www.w3.org/TR/html5/the-canvas-element.html#the-canvas-element">HTML5 canvas element.</a>.
+  </canvas>
+  <div>
+    <button type="button" title="Random colony" id="random"><img src="./images/glyphicons_322_playing_dices.png"></button>
+    <button type="button" title="Clear the canvas" id="clear"><img src="./images/glyphicons_192_circle_remove.png"></button>
+    <button type="button" title="Play" id="toggle"><img src="./images/glyphicons_173_play.png"></button>
+    <button type="button" title="Single step" id="step"><img src="./images/glyphicons_178_step_forward.png"></button>
+    <button type="button" title="Rotate all Patterns" id="rotate"><img src="./images/glyphicons_082_roundabout.png"></button>
+    <button type="button" title="Help" id="info"><img src="./images/glyphicons_195_circle_info.png"></button>
+
+</div>
+</div>
+<div id="patterns">
+<div class="ui-widget-content ui-draggable" id="key" style="position: relative; ">
+  <h3>Key</h3>
+<ul>
+  <li><img src="./images/still_life.gif" alt="still life colour">Still life</li>
+  <li><img src="./images/oscillator.gif" alt="oscillator colour">Oscillator</li>
+  <li><img src="./images/spaceship.gif" alt="spaceship colour">Spaceship</li>
+  <li><img src="./images/puffer.gif" alt="Puffer colour">Puffer</li>
+  <li><img src="./images/methuselah.gif" alt="Methuselah colour">Methuselah</li>
+  <li><img src="./images/gun.gif" alt="gun life colour">Gun</li>
+</ul>
+</div>
+<!--BEGIN PATTERNS-->
+<canvas data-type="still_life" id="block" class="ui-widget-content" width="14" height="14" title="Block"></canvas>
+<canvas data-type="oscillator" id="blinker" class="ui-widget-content" width="21" height="21" title="Blinker"></canvas>
+<canvas data-type="spaceship" id="glider" class="ui-widget-content" width="21" height="21" title="Glider"></canvas>
+<canvas data-type="methuselah" id="rpentomino" class="ui-widget-content" width="21" height="21" title="R-pentomino"></canvas>
+<canvas data-type="still_life" id="boat" class="ui-widget-content" width="21" height="21" title="Boat"></canvas>
+<canvas data-type="oscillator" id="toad" class="ui-widget-content" width="28" height="28" title="Toad"></canvas>
+<canvas data-type="oscillator" id="beacon" class="ui-widget-content" width="28" height="28" title="Beacon"></canvas>
+<canvas data-type="oscillator" id="clock" class="ui-widget-content" width="28" height="28" title="Clock"></canvas>
+<canvas data-type="methuselah" id="bheptomino" class="ui-widget-content" width="28" height="28" title="B-heptomino"></canvas>
+<canvas data-type="still_life" id="beehive" class="ui-widget-content" width="28" height="28" title="Beehive"></canvas>
+<canvas data-type="still_life" id="loaf" class="ui-widget-content" width="28" height="28" title="Loaf"></canvas>
+<canvas data-type="spaceship" id="lwss" class="ui-widget-content" width="35" height="35" title="Lightweight spaceship"></canvas>
+<canvas data-type="spaceship" id="mwss" class="ui-widget-content" width="42" height="42" title="Middleweight spaceship"></canvas>
+<canvas data-type="oscillator" id="jam" class="ui-widget-content" width="49" height="49" title="Jam"></canvas>
+<canvas data-type="spaceship" id="hwss" class="ui-widget-content" width="49" height="49" title="Heavyweight spaceship"></canvas>
+<canvas data-type="methuselah" id="acorn" class="ui-widget-content" width="49" height="49" title="Acorn"></canvas>
+<canvas data-type="methuselah" id="rabbits" class="ui-widget-content" width="49" height="49" title="Rabbits"></canvas>
+<canvas data-type="oscillator" id="pentadecathlon" class="ui-widget-content" width="70" height="70" title="Pentadecathlon"></canvas>
+<canvas data-type="oscillator" id="29p9" class="ui-widget-content" width="70" height="70" title="29P9"></canvas>
+<canvas data-type="spaceship" id="sidecar" class="ui-widget-content" width="70" height="70" title="Sidecar"></canvas>
+<canvas data-type="oscillator" id="1234" class="ui-widget-content" width="77" height="77" title="1-2-3-4"></canvas>
+<canvas data-type="oscillator" id="rats" class="ui-widget-content" width="84" height="84" title="$rats"></canvas>
+<canvas data-type="spaceship" id="turtle" class="ui-widget-content" width="84" height="84" title="Turtle"></canvas>
+<canvas data-type="oscillator" id="pulsar" class="ui-widget-content" width="91" height="91" title="Pulsar"></canvas>
+<canvas data-type="spaceship" id="crab" class="ui-widget-content" width="91" height="91" title="Crab"></canvas>
+<canvas data-type="spaceship" id="orion2" class="ui-widget-content" width="91" height="91" title="Orion 2"></canvas>
+<canvas data-type="spaceship" id="canadagoose" class="ui-widget-content" width="91" height="91" title="Canada goose"></canvas>
+<canvas data-type="puffer" id="noahsark" class="ui-widget-content" width="105" height="105" title="Noah's ark"></canvas>
+<canvas data-type="puffer" id="puffer2" class="ui-widget-content" width="126" height="126" title="Puffer 2"></canvas>
+<canvas data-type="oscillator" id="queenbeeshuttle" class="ui-widget-content" width="154" height="154" title="Queen bee shuttle"></canvas>
+<canvas data-type="puffer" id="puffer1" class="ui-widget-content" width="189" height="189" title="Puffer 1"></canvas>
+<canvas data-type="gun" id="gosperglidergun" class="ui-widget-content" width="252" height="252" title="Gosper glider gun"></canvas>
+<canvas data-type="gun" id="b52bomber" class="ui-widget-content" width="273" height="273" title="B-52 bomber"></canvas>
+<!--END PATTERNS-->
+</div>
+<p class="sect">&sect;</p>
+
+<p>The source code for this web page can be found at <a href="http://github.com/wordaligned">github.com/wordaligned</a>.</p>
+
+<p>Acknowledgements:
+<ul>
+  <li>The patterns shown here are described and available for <a href="http://www.conwaylife.com/patterns/all.zip">download</a> on the <a href="http://www.conwaylife.com/wiki/Main_Page">Conway&#8217;s game of life wiki</a>.</li>
+  <li>The button icons used on this page were downloaded from <a href="http://glyphicons.com">glyphicons.com</a> and are licensed under the <a href="http://creativecommons.org/licenses/by/3.0/deed.en">CC BY 3.0</a> terms.</li>
+  <li>The canvas animation is done using <a href="http://jquery.com">jQuery</a></li>
+  <li><a href="http://jqueryui.com">jQuery UI</a> adds the drag drop effect</li>
+</ul>
+</p>
+  <hr/>
+<div id="footer">
+  <a title="wordaligned.org" href="/"><img src="./images/glyphicons_020_home.png" alt="home"></a><a href="mailto:tag@wordaligned.org" title="email tag@wordaligned.org"><img src="./images/glyphicons_010_envelope.png" alt="email"></a>
+</div>
+</body>
+</html>
