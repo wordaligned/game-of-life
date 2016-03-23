@@ -15,6 +15,8 @@ Dependencies:
 * RLE files. These encode the various patterns used in the implementation, and were downloaded from [conwaylife.com][]
 * Button graphic icons. The Pause, Play etc icons used on the web client buttons were obtained from [glyphicons.com][]
 
+Play the game of life at <http://wordaligned.org/life>
+
 Questions or comments: mailto:tag@wordaligned.org
 
 [Imagemagick]: http://www.imagemagick.org "Command line tools to manipulate images"
